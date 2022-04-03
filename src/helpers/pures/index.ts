@@ -1,3 +1,30 @@
+import {IGender} from '~types';
+
+/**
+ *
+ * @param gender Male or Female
+ * @param weight body weight in kg
+ * @param height body height in cm
+ * @returns basal metabolic rate in kcal/day
+ */
+const basalMetabolicRate = (
+  gender: IGender,
+  weight: number,
+  height: number,
+): string => {
+  if (gender === 'Female') {
+    return (655.1 + 9.563 * weight + 1.85 * height - 4.676 * 24).toFixed(2);
+  }
+  return (66.5 + 13.75 * weight + 5.003 * height - 6.75 * 24).toFixed(2);
+};
+
+const bmrIndicator = (bmi: number): string => {
+  if (bmi < 18.5) return 'more than';
+  if (bmi < 24.9 && bmi >= 18.5) return 'around';
+  if (bmi > 24.9) return 'less than';
+  return '';
+};
+
 /**
  *
  * @param height body height
@@ -56,6 +83,8 @@ const ordinalNumbers = (cardinal: string): string => {
 const randomNumber = () => Math.floor(Math.random() * (9999 - 100 + 1) + 100);
 
 export {
+  basalMetabolicRate,
+  bmrIndicator,
   numberOnly,
   categoryBodyMassIndex,
   calculateBodyMassIndex,
