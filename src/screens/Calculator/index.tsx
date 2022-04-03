@@ -2,12 +2,7 @@ import React, {createRef, useState} from 'react';
 import {View} from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import {BaseSheet, DummyFlatList, Gap, Phrase} from '~components/atoms';
-import {
-  BodyInput,
-  GenderButton,
-  InputTile,
-  PresetButton,
-} from '~components/molecules';
+import {BodyInput, GenderButton, InputTile} from '~components/molecules';
 import {Canvas, FloatButton} from '~components/organisms';
 import spaces from '~constants/spaces';
 import {useNavigate} from '~hooks';

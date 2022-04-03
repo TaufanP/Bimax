@@ -10,9 +10,7 @@ import {useNavigate} from '~hooks';
 import {RootStackParamList} from '~types';
 import styles from './styles';
 
-interface BodyIndexProps {}
-
-const BodyIndex = ({}: BodyIndexProps) => {
+const BodyIndex = () => {
   const navigation = useNavigate();
   const route = useRoute<RouteProp<RootStackParamList, 'BodyIndex'>>();
   const {height, gender, weight} = route?.params || {};

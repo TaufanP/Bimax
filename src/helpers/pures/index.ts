@@ -20,7 +20,46 @@ const categoryBodyMassIndex = (bmi: number): string => {
   return '';
 };
 
+/**
+ *
+ * @returns list of random numbers
+ */
+const generateRandomNumbers = (): number[] => {
+  const numbers = new Array(6).fill(0);
+  return numbers.map(() => randomNumber());
+};
+
 const numberOnly = (str: string | undefined) =>
   !str || !!parseFloat(str) || 'Please provide a number.';
 
-export {numberOnly, categoryBodyMassIndex, calculateBodyMassIndex};
+/**
+ *
+ * @param list list of numbers
+ * @returns order numbers from the smallest one
+ */
+const smallestNumbers = (list: number[]): number[] =>
+  list.sort((a, b) => (a - b < 1 ? -1 : 1));
+
+/**
+ *
+ * @param cardinal integer
+ * @returns return integer with its ordinal
+ */
+const ordinalNumbers = (cardinal: string): string => {
+  const index = cardinal[cardinal.length - 1];
+  if (index === '1' && cardinal !== '11') return `${cardinal}st`;
+  if (index === '2' && cardinal !== '12') return `${cardinal}nd`;
+  if (index === '3' && cardinal !== '13') return `${cardinal}rd`;
+  return `${cardinal}th`;
+};
+
+const randomNumber = () => Math.floor(Math.random() * (9999 - 100 + 1) + 100);
+
+export {
+  numberOnly,
+  categoryBodyMassIndex,
+  calculateBodyMassIndex,
+  generateRandomNumbers,
+  smallestNumbers,
+  ordinalNumbers,
+};

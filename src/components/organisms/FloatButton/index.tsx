@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 import {TouchableOpacityProps, View} from 'react-native';
 import {PresetButton} from '~components/molecules';
 import styles from './styles';
 
 interface FloatButtonProps extends TouchableOpacityProps {
-  label: string;
+  label?: string;
 }
 
-const FloatButton = ({label, ...props}: FloatButtonProps) => {
+const FloatButton = ({
+  label,
+  children,
+  ...props
+}: PropsWithChildren<FloatButtonProps>) => {
   return (
     <View style={styles.floats}>
-      <PresetButton style={styles.flex} {...props}>
-        {label}
-      </PresetButton>
+      {!label ? (
+        <>{children}</>
+      ) : (
+        <PresetButton style={styles.flex} {...props}>
+          {label}
+        </PresetButton>
+      )}
     </View>
   );
 };

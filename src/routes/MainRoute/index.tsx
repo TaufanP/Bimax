@@ -1,6 +1,6 @@
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import React from 'react';
-import {Calculator} from '~screens';
+import {Calculator, NumberFinder} from '~screens';
 import {TopTabStackParamList} from '~types';
 import {options, screenOptions} from './utilities';
 
@@ -12,7 +12,7 @@ const MainRoute = () => {
       <Tab.Screen name="Calculator" component={Calculator} />
       <Tab.Screen
         name="NumberFinder"
-        component={Calculator}
+        component={NumberFinder}
         options={options}
       />
     </Tab.Navigator>
