@@ -4,6 +4,7 @@ import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {CustomStatusBar} from '~components/atoms';
 import {MainRoute} from '~routes';
+import {BodyIndex} from '~screens';
 import {RootStackParamList} from '~types';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -16,6 +17,7 @@ const Root = () => (
         initialRouteName="Home"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={MainRoute} />
+        <Stack.Screen name="BodyIndex" component={BodyIndex} />
       </Stack.Navigator>
     </NavigationContainer>
   </SafeAreaProvider>

@@ -8,24 +8,34 @@ import {
   InputTile,
   PresetButton,
 } from '~components/molecules';
-import {Canvas} from '~components/organisms';
+import {Canvas, FloatButton} from '~components/organisms';
 import spaces from '~constants/spaces';
+import {useNavigate} from '~hooks';
+import {IGender} from '~types';
 import styles from './styles';
 
 const Calculator = () => {
+  const navigation = useNavigate();
+
   const heightRef = createRef<ActionSheet>();
   const weightRef = createRef<ActionSheet>();
+
   const [bodyHeight, setBodyHeight] = useState<number>(0);
   const [bodyWeight, setBodyWeight] = useState<number>(0);
-  const [gender, setGender] = useState<'Male' | 'Female'>('Male');
+  const [gender, setGender] = useState<IGender>('Male');
 
-  const onHeightPress = () => heightRef.current?.show();
+  const onCalculate = () =>
+    navigation.navigate('BodyIndex', {
+      gender,
+      height: bodyHeight,
+      weight: bodyWeight,
+    });
 
   const onFemalePress = () => setGender('Female');
 
-  const onMalePress = () => setGender('Male');
+  const onHeightPress = () => heightRef.current?.show();
 
-  const onWeightPress = () => weightRef.current?.show();
+  const onMalePress = () => setGender('Male');
 
   const onSetBodyHeight = (height: number) => {
     heightRef.current?.hide();
@@ -36,6 +46,8 @@ const Calculator = () => {
     weightRef.current?.hide();
     setBodyWeight(weight);
   };
+
+  const onWeightPress = () => weightRef.current?.show();
 
   const formComplete = !!gender && !!bodyHeight && !!bodyWeight;
 
@@ -79,11 +91,11 @@ const Calculator = () => {
           </View>
         </View>
       </DummyFlatList>
-      <View style={styles.floats}>
-        <PresetButton style={styles.flex} disabled={!formComplete}>
-          Calculate
-        </PresetButton>
-      </View>
+      <FloatButton
+        disabled={!formComplete}
+        onPress={onCalculate}
+        label="Calculate"
+      />
 
       <BaseSheet ref={heightRef}>
         <BodyInput
