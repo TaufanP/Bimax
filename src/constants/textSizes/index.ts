@@ -9,6 +9,7 @@ const textSizes = {
   '18': converter(18),
   '24': converter(24),
   '32': converter(32),
+  '48': converter(48),
 };
 
 export {textSizes};

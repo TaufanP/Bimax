@@ -1,113 +1,106 @@
-import React from 'react';
+import React, {createRef, useState} from 'react';
 import {View} from 'react-native';
-import {Button, DummyFlatList, Gap, Phrase} from '~components/atoms';
+import ActionSheet from 'react-native-actions-sheet';
+import {BaseSheet, DummyFlatList, Gap, Phrase} from '~components/atoms';
+import {
+  BodyInput,
+  GenderButton,
+  InputTile,
+  PresetButton,
+} from '~components/molecules';
 import {Canvas} from '~components/organisms';
-import colors from '~constants/colors';
 import spaces from '~constants/spaces';
-import {diagonalDp, winWidthPercent} from '~helpers';
+import styles from './styles';
 
 const Calculator = () => {
+  const heightRef = createRef<ActionSheet>();
+  const weightRef = createRef<ActionSheet>();
+  const [bodyHeight, setBodyHeight] = useState<number>(0);
+  const [bodyWeight, setBodyWeight] = useState<number>(0);
+  const [gender, setGender] = useState<'Male' | 'Female'>('Male');
+
+  const onHeightPress = () => heightRef.current?.show();
+
+  const onFemalePress = () => setGender('Female');
+
+  const onMalePress = () => setGender('Male');
+
+  const onWeightPress = () => weightRef.current?.show();
+
+  const onSetBodyHeight = (height: number) => {
+    heightRef.current?.hide();
+    setBodyHeight(height);
+  };
+
+  const onSetBodyWeight = (weight: number) => {
+    weightRef.current?.hide();
+    setBodyWeight(weight);
+  };
+
+  const formComplete = !!gender && !!bodyHeight && !!bodyWeight;
+
   return (
     <Canvas>
       <DummyFlatList usePadding>
         <Gap vertical={spaces.semiLarge} />
-        <Button
-          style={{
-            backgroundColor: colors.white,
-            padding: spaces.semiLarge,
-            borderRadius: spaces.small,
-          }}>
-          <Phrase preset="subheadingBold">Height</Phrase>
-          <Gap vertical={spaces.semiLarge} />
-          <View style={{width: '100%', alignItems: 'center'}}>
-            <Phrase
-              style={{
-                fontSize: diagonalDp(48),
-                color: colors.black100,
-                fontWeight: 'bold',
-              }}
-              isCenter>
-              160.12cm
-            </Phrase>
-          </View>
-        </Button>
+        <InputTile
+          label={'Height'}
+          unit={'cm'}
+          onPress={onHeightPress}
+          value={bodyHeight}
+        />
         <Gap vertical={spaces.semiLarge} />
-        <Button
-          style={{
-            backgroundColor: colors.white,
-            padding: spaces.semiLarge,
-            borderRadius: spaces.small,
-          }}>
-          <Phrase preset="subheadingBold">Weight</Phrase>
-          <Gap vertical={spaces.semiLarge} />
-          <View style={{width: '100%', alignItems: 'center'}}>
-            <Phrase
-              style={{
-                fontSize: diagonalDp(48),
-                color: colors.black100,
-                fontWeight: 'bold',
-              }}
-              isCenter>
-              60kg
-            </Phrase>
-          </View>
-        </Button>
+        <InputTile
+          label={'Weight'}
+          unit={'kg'}
+          onPress={onWeightPress}
+          value={bodyWeight}
+        />
         <Gap vertical={spaces.semiLarge} />
         <Phrase preset="subheadingBold">Gender</Phrase>
         <Gap vertical={spaces.semiLarge} />
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}>
-          <Button
-            style={{
-              borderRadius: spaces.small,
-              flex: 1,
-              paddingVertical: spaces.medium,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderColor: colors.secondary,
-              borderWidth: 2,
-              backgroundColor: colors.secondary,
-            }}>
-            <Phrase preset="action">Male</Phrase>
-          </Button>
+        <View style={styles.buttons}>
+          <View style={styles.flex}>
+            <GenderButton
+              type="male"
+              primary={gender === 'Male'}
+              onPress={onMalePress}>
+              Male
+            </GenderButton>
+          </View>
           <Gap horizontal={spaces.semiLarge} />
-          <Button
-            style={{
-              borderRadius: spaces.small,
-              flex: 1,
-              paddingVertical: spaces.medium,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderColor: colors.secondary,
-              borderWidth: 2,
-            }}>
-            <Phrase preset="actionPrimary">Female</Phrase>
-          </Button>
+          <View style={styles.flex}>
+            <GenderButton
+              type="female"
+              primary={gender === 'Female'}
+              onPress={onFemalePress}>
+              Female
+            </GenderButton>
+          </View>
         </View>
       </DummyFlatList>
-      <View
-        style={{
-          position: 'absolute',
-          width: winWidthPercent(100) - spaces.semiLarge * 2,
-          left: spaces.semiLarge,
-          bottom: spaces.semiLarge,
-        }}>
-        <Button
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingVertical: spaces.medium,
-            borderRadius: spaces.small,
-            backgroundColor: colors.secondary,
-          }}>
-          <Phrase preset="action">Calculate</Phrase>
-        </Button>
+      <View style={styles.floats}>
+        <PresetButton style={styles.flex} disabled={!formComplete}>
+          Calculate
+        </PresetButton>
       </View>
+
+      <BaseSheet ref={heightRef}>
+        <BodyInput
+          label="Your height"
+          buttonLabel="Save Height"
+          onSave={onSetBodyHeight}
+          placeholder="Enter your height"
+        />
+      </BaseSheet>
+      <BaseSheet ref={weightRef}>
+        <BodyInput
+          label="Your weight"
+          buttonLabel="Save Weight"
+          onSave={onSetBodyWeight}
+          placeholder="Enter your weight"
+        />
+      </BaseSheet>
     </Canvas>
   );
 };

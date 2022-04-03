@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: textSizes['16'],
   },
+  banner: {
+    fontSize: textSizes['48'],
+    color: colors.black100,
+    fontWeight: 'bold',
+  },
   danger: {
     fontSize: textSizes['12'],
     color: colors.danger,

@@ -1,5 +1,12 @@
+import {NavigatorScreenParams} from '@react-navigation/native';
+
 type RootStackParamList = {
-  Calculator: undefined;
+  Home: NavigatorScreenParams<TopTabStackParamList>;
 };
 
-export type {RootStackParamList};
+type TopTabStackParamList = {
+  Calculator: undefined;
+  NumberFinder: undefined;
+};
+
+export type {RootStackParamList, TopTabStackParamList};

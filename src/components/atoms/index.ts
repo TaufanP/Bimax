@@ -1,3 +1,4 @@
+export {default as BaseSheet} from './BaseSheet';
 export {default as Button} from './Button';
 export {default as CustomStatusBar} from './CustomStatusBar';
 export {default as DummyFlatList} from './DummyFlatList';
