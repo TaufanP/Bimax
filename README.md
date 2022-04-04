@@ -1,6 +1,6 @@
 <!-- HEADER -->
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/33638021/161385735-9ff05791-dc23-4884-a931-8dae2a3b7dbe.png" alt="MailBook" width="104">
+  <img src="https://user-images.githubusercontent.com/33638021/161464375-dcd39fe1-9382-41a5-ac8e-1e3cabcbd879.png" alt="Bimax" width="104">
   <h1 align="center">Bimax</h1>
 </p>
 
