@@ -4,6 +4,12 @@ import spaces from '~constants/spaces';
 import {textSizes} from '~constants/textSizes';
 
 const styles = StyleSheet.create({
+  container: {
+    borderRadius: spaces.small,
+    paddingHorizontal: spaces.medium,
+    backgroundColor: colors.white80,
+  },
+
   input: {
     color: colors.black100,
     fontSize: textSizes['14'],

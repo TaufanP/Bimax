@@ -14,9 +14,18 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'transparent',
   },
+  content: {flexDirection: 'row', alignItems: 'center'},
 
   ghost: {
     backgroundColor: 'transparent',
+  },
+
+  icon: {
+    position: 'absolute',
+    width: spaces.semiLarge,
+    aspectRatio: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   loading: {

@@ -3,14 +3,12 @@ import {TouchableOpacityProps, View} from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withSpring,
-  withTiming,
 } from 'react-native-reanimated';
 import Assets from '~Assets';
-import {Button, Gap, Phrase} from '~components/atoms';
+import {Button, Phrase} from '~components/atoms';
 import spaces from '~constants/spaces';
-import {diagonalDp} from '~helpers';
 import styles from './styles';
+import {animate} from './utilities';
 
 interface PresetButtonProps extends TouchableOpacityProps {
   type?: 'male' | 'female';
@@ -34,36 +32,16 @@ const GenderButton = ({
     transform: [{translateX: textPosition.value}],
   }));
 
-  const animate = () => {
-    if (primary) {
-      position.value = withSpring(0, {damping: 13});
-      textPosition.value = withTiming(spaces.medium);
-      return;
-    }
-    position.value = withTiming(diagonalDp(88));
-    textPosition.value = withTiming(0);
-  };
-
   useEffect(() => {
-    animate();
+    animate(primary, position, textPosition);
   }, [primary]);
 
   return (
     <Button
       {...props}
       style={[styles.container, styles[primary ? 'primary' : 'ghost']]}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <Animated.View
-          style={[
-            {
-              position: 'absolute',
-              width: spaces.semiLarge,
-              aspectRatio: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-            },
-            iconStyle,
-          ]}>
+      <View style={styles.content}>
+        <Animated.View style={[styles.icon, iconStyle]}>
           {type === 'male' ? <Assets.svg.Male /> : <Assets.svg.Female />}
         </Animated.View>
         <Animated.View style={textStyle}>

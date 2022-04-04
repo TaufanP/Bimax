@@ -27,6 +27,7 @@ const BoxButton = ({
   }, [disabled]);
 
   const background = {backgroundColor};
+
   return (
     <Animated.View style={buttonStyle}>
       <Button
