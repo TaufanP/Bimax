@@ -40,11 +40,11 @@ Bimax is a BMI calculator application. You can check your BMI by entering your b
 
 ### Calculate BMI
 
-<img src="https://user-images.githubusercontent.com/33638021/161407582-f61ac5b9-c357-46f9-8067-1ed26c1e2017.gif" alt="Search and Display Contacts" height="600">
+<img src="https://user-images.githubusercontent.com/33638021/161467328-34f249c1-5c2e-42dd-808a-0dffafc0ee99.gif" alt="Calculate BMI" height="600">
 
 ### N-th Smallest Number
 
-<img src="https://user-images.githubusercontent.com/33638021/161407620-197f27cb-3ec3-451f-beb7-6ee203213cd7.gif" alt="Add New Contact" height="600">
+<img src="https://user-images.githubusercontent.com/33638021/161467358-e90e23ea-e045-4d6c-8a50-7583aa4efb13.gif" alt="N-th Smallest Number" height="600">
 
 <!-- GETTING STARTED -->
 
