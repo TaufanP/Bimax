@@ -28,10 +28,10 @@
 
 <!-- BACKGROUND -->
 
-## About MailBook <a name="about"></a>
+## About Bimax <a name="about"></a>
 
 <p>
-MailBook is a BMI calculator application. You can check your BMI by entering your body weight and height.
+Bimax is a BMI calculator application. You can check your BMI by entering your body weight and height.
 </p>
 
 <!-- DEMO AND PREVIEW -->
