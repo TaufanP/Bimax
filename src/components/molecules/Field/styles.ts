@@ -13,17 +13,14 @@ const styles = StyleSheet.create({
   input: {
     color: colors.black100,
     fontSize: textSizes['14'],
-    flex: 1,
+    paddingVertical: spaces.medium,
+    paddingLeft: spaces.xsmall,
+    flex: 0,
   },
   inputContainer: {
     backgroundColor: colors.white80,
     borderRadius: spaces.small,
     paddingHorizontal: spaces.medium,
-  },
-  iosInput: {
-    paddingVertical: spaces.medium,
-    paddingLeft: spaces.xsmall,
-    flex: 0,
   },
 });
 
